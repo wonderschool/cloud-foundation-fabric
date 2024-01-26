@@ -147,9 +147,9 @@ resource "google_container_node_pool" "nodepool" {
       var.node_config.spot == true && var.node_config.preemptible != true
     )
     tags = var.tags
-    taint = (
-      var.taints == null ? [] : concat(var.taints, local.taints_windows)
-    )
+    # taint = (
+    #   var.taints == null ? [] : concat(var.taints, local.taints_windows)
+    # )
 
     dynamic "ephemeral_storage_config" {
       for_each = var.node_config.ephemeral_ssd_count != null ? [""] : []
