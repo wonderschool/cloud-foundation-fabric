@@ -55,8 +55,9 @@ variable "enable_addons" {
     istio = optional(object({
       enable_tls = bool
     }))
-    kalm           = optional(bool, false)
-    network_policy = optional(bool, false)
+    kalm                = optional(bool, false)
+    network_policy      = optional(bool, false)
+    gcs_fuse_csi_driver = optional(bool, false)
   })
   default = {
     horizontal_pod_autoscaling = true

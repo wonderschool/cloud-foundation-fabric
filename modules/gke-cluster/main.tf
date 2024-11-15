@@ -118,6 +118,12 @@ resource "google_container_cluster" "cluster" {
     gke_backup_agent_config {
       enabled = var.enable_addons.gke_backup_agent
     }
+    dynamic "gcs_fuse_csi_driver_config" {
+      for_each = var.enable_addons.gcs_fuse_csi_driver ? ["enabled"] : []
+      content {
+        enabled = var.enable_addons.gcs_fuse_csi_driver
+      }
+    }
   }
 
   dynamic "authenticator_groups_config" {
