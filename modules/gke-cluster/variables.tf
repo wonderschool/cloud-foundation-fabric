@@ -218,9 +218,10 @@ variable "tags" {
 variable "vpc_config" {
   description = "VPC-level configuration."
   type = object({
-    network                = string
-    subnetwork             = string
-    master_ipv4_cidr_block = optional(string)
+    network                         = string
+    subnetwork                      = string
+    master_ipv4_cidr_block          = optional(string)
+    gcp_public_cidrs_access_enabled = optional(bool)
     secondary_range_blocks = optional(object({
       pods     = string
       services = string
