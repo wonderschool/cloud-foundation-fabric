@@ -250,6 +250,8 @@ resource "google_container_cluster" "cluster" {
   dynamic "master_authorized_networks_config" {
     for_each = var.vpc_config.master_authorized_ranges != null ? [""] : []
     content {
+      gcp_public_cidrs_access_enabled = try(var.vpc_config.gcp_public_cidrs_access_enabled, null)
+
       dynamic "cidr_blocks" {
         for_each = var.vpc_config.master_authorized_ranges
         iterator = range
